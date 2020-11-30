@@ -1,23 +1,24 @@
 package simpleone;
 
-public class two implements Runnable{
+public class two extends Thread{
    private String name;
     public two(String name)
     {
         this.name=name;
     }
-    public String getName()
-    {
-        return name;
-    }
-    public void setName(String name)
-    {
-        this.name=name;
-    }
+
+
 
     @Override
     public void run() {
-        System.out.println("Имя этому "+name+"");
+        long start = System.currentTimeMillis();
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Имя этому "+name+" Имя потока "+getName());
+        System.out.println(" - Сколько я проспал? \n - " + ((System.currentTimeMillis()-start)));
 
     }
 }
